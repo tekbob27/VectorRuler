@@ -95,6 +95,7 @@ var checkSubUnitBase = function(){
 
             for (var j = ruler.subLabels.length - 1; j >= 0; j--) {
                 document.getElementById("subUnitExponent")[j].text =ruler.subLabels[j]
+                console.info(ruler.subLabels[j])
             }
     }
     else{
@@ -113,7 +114,7 @@ var constructRuler = function(){
     var layerArray = new Array(ruler.subUnitExponent)//Layers in the SVG file.
 
     for (var exponentIndex = 0;  exponentIndex <= ruler.subUnitExponent ;  exponentIndex++) {
-        print(exponentIndex)
+        console.info(exponentIndex)
         //loop thru each desired level of ticks, inches, halves, quarters, etc....
         var tickQty = ruler.width * Math.pow(ruler.subUnitBase,exponentIndex)
         layerArray[exponentIndex]= new paper.Layer();
