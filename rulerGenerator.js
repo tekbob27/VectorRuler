@@ -114,7 +114,6 @@ var constructRuler = function(){
     var layerArray = new Array(ruler.subUnitExponent)//Layers in the SVG file.
 
     for (var exponentIndex = 0;  exponentIndex <= ruler.subUnitExponent ;  exponentIndex++) {
-        console.info(exponentIndex)
         //loop thru each desired level of ticks, inches, halves, quarters, etc....
         var tickQty = ruler.width * Math.pow(ruler.subUnitBase,exponentIndex)
         layerArray[exponentIndex]= new paper.Layer();
@@ -129,6 +128,7 @@ var constructRuler = function(){
             // levelToLevelMultiplier =0.7
             var tickHeight
             tickHeight = ruler.heightPixels*Math.pow(ruler.levelToLevelMultiplier,exponentIndex)
+            console.info(tickHeight, exponentIndex, ruler.levelToLevelMultiplier)
 
             var tickSpacing = ruler.pixelsPerUnit/(Math.pow(ruler.subUnitBase,exponentIndex))
             //spacing between ticks, the fundemental datum on a ruler :-)
