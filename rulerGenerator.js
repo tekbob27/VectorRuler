@@ -69,6 +69,7 @@ var checkSubUnitBase = function(){
    "1/2"  +suffix,
    "1/4"  +suffix,
    "1/8"  +suffix,
+   "1/10"  +suffix,
    "1/16"  +suffix,
    "1/32"  +suffix,
    "1/64"  +suffix,
