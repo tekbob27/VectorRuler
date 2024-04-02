@@ -72,7 +72,6 @@ var checkSubUnitBase = function(){
    "1/10"  +suffix,
    "1/16"  +suffix,
    "1/32"  +suffix,
-   "1/64"  +suffix,
     ]
 
     if (ruler.subUnitBase === '10'){//Decimal!
