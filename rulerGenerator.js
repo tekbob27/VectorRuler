@@ -114,6 +114,7 @@ var constructRuler = function(){
     var layerArray = new Array(ruler.subUnitExponent)//Layers in the SVG file.
 
     for (var exponentIndex = 0;  exponentIndex <= ruler.subUnitExponent ;  exponentIndex++) {
+        print(exponentIndex)
         //loop thru each desired level of ticks, inches, halves, quarters, etc....
         var tickQty = ruler.width * Math.pow(ruler.subUnitBase,exponentIndex)
         layerArray[exponentIndex]= new paper.Layer();
