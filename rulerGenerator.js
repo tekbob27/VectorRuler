@@ -56,7 +56,7 @@ var checkSubUnitBase = function(){
 
     var subLabelsDec = [
    "1"  +suffix,
-   "5/10th"  +suffix,
+   "1/2"  +suffix,
    "1/10th"  +suffix,
    "1/100th"  +suffix,
    "1/1000th"  +suffix,
