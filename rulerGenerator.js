@@ -56,12 +56,12 @@ var checkSubUnitBase = function(){
 
     var subLabelsDec = [
    "1"  +suffix,
+   "5/10th"  +suffix,
    "1/10th"  +suffix,
    "1/100th"  +suffix,
    "1/1000th"  +suffix,
    "1/10000th"  +suffix,
    "1/100000th"  +suffix,
-   "1/1000000th"  +suffix,
     ]
 
     var subLabelsFrac = [
@@ -69,9 +69,9 @@ var checkSubUnitBase = function(){
    "1/2"  +suffix,
    "1/4"  +suffix,
    "1/8"  +suffix,
-   "1/10"  +suffix,
    "1/16"  +suffix,
    "1/32"  +suffix,
+   "1/64"  +suffix,
     ]
 
     if (ruler.subUnitBase === '10'){//Decimal!
