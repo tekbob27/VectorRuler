@@ -128,7 +128,9 @@ var constructRuler = function(){
             // levelToLevelMultiplier =0.7
             var tickHeight
             tickHeight = ruler.heightPixels*Math.pow(ruler.levelToLevelMultiplier,exponentIndex)
-            console.info(tickHeight, exponentIndex, ruler.levelToLevelMultiplier)
+            console.info(tickHeight)
+            console.info(exponentIndex) 
+            console.info(ruler.levelToLevelMultiplier)
 
             var tickSpacing = ruler.pixelsPerUnit/(Math.pow(ruler.subUnitBase,exponentIndex))
             //spacing between ticks, the fundemental datum on a ruler :-)
