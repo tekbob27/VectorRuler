@@ -185,6 +185,9 @@ var tick = function(tickHeight, horizPosition, tickIndex, offsetTickIndex, expon
 
 var tickLabel = function(x1,y2,finalTick,tickIndex,exponentIndex){
     //label the tick
+            if (tickIndex == 0) {
+                return
+            }
             var labelTextSize
             var labelTextSizeInches = 18
             var labelTextSizeCm = Math.round(labelTextSizeInches/ruler.cmPerInch)
@@ -194,7 +197,7 @@ var tickLabel = function(x1,y2,finalTick,tickIndex,exponentIndex){
             var yLabelOffset = 1
             // if (finalTick) {xLabelOffset = -1* xLabelOffset}//last label is right justified
             var text = new paper.PointText(new paper.Point(x1+ xLabelOffset, y2+yLabelOffset));
-            text.justification = 'left';
+            text.justification = 'right';
             // if (finalTick) {text.justification = 'right';}//last label is right justified
             text.fillColor = 'black';
             text.content = tickIndex;
