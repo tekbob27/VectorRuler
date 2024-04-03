@@ -131,7 +131,7 @@ var constructRuler = function(){
 
         highestTickDenomonatorMultiplier = ruler.ticksPerUnit / Math.pow(ruler.subUnitBase,exponentIndex)
         //to prevent reduntant ticks, this multiplier is applied to crrent units to ensure consistent indexing of ticks.
-        if ((ruler.subUnitBase === '10' && exponentIndex < 3) || ruler.subUnitBase === '2') {//Decimal!
+        //if ((ruler.subUnitBase === '10' && exponentIndex < 3) || ruler.subUnitBase === '2') {//Decimal!
         
             for (var tickIndex = 0;  tickIndex <= tickQty ;  tickIndex++) {
                 ruler.masterTickIndex = highestTickDenomonatorMultiplier * tickIndex
@@ -143,6 +143,13 @@ var constructRuler = function(){
                 console.info(ruler.levelToLevelMultiplier)
 
                 var tickSpacing = ruler.pixelsPerUnit/(Math.pow(ruler.subUnitBase,exponentIndex))
+                if (ruler.subUnitBase === '10'){//Decimal!
+                    if (exponentIndex === 1) {
+                        tickSpacing = ruler.pixelsPerUnit / 2.0
+                    } else if (exponentIndex !== 1 && exponentIndex > 0) {
+                        tickSpacing = ruler.pixelsPerUnit / 10.0
+                    }
+                }
                 //spacing between ticks, the fundemental datum on a ruler :-)
                 var finalTick = false
                 if(tickIndex === tickQty){finalTick = true}
@@ -151,7 +158,7 @@ var constructRuler = function(){
                 tick(tickHeight,0, tickIndex, offsetTickIndex, exponentIndex, tickSpacing,finalTick);
                 //draws the ticks
             }
-        }
+        //}
     }
 }
 
@@ -185,10 +192,10 @@ var tickLabel = function(x1,y2,finalTick,tickIndex,exponentIndex){
             else{labelTextSize = labelTextSizeCm;}
             var xLabelOffset = 4
             var yLabelOffset = 1
-            if (finalTick) {xLabelOffset = -1* xLabelOffset}//last label is right justified
+            // if (finalTick) {xLabelOffset = -1* xLabelOffset}//last label is right justified
             var text = new paper.PointText(new paper.Point(x1+ xLabelOffset, y2+yLabelOffset));
             text.justification = 'left';
-            if (finalTick) {text.justification = 'right';}//last label is right justified
+            // if (finalTick) {text.justification = 'right';}//last label is right justified
             text.fillColor = 'black';
             text.content = tickIndex;
             text.style = {
