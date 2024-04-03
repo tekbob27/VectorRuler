@@ -152,7 +152,7 @@ var constructRuler = function(){
                 }
                 //spacing between ticks, the fundemental datum on a ruler :-)
                 var finalTick = false
-                if(tickIndex === tickQty){finalTick = true}
+                if(tickIndex === tickQty + 1){finalTick = true}
 
                 var offsetTickIndex = parseInt(tickIndex) + parseInt(startNo)
                 tick(tickHeight,0, tickIndex, offsetTickIndex, exponentIndex, tickSpacing,finalTick);
