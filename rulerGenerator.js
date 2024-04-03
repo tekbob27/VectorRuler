@@ -95,7 +95,6 @@ var checkSubUnitBase = function(){
 
             for (var j = ruler.subLabels.length - 1; j >= 0; j--) {
                 document.getElementById("subUnitExponent")[j].text =ruler.subLabels[j]
-                console.info(ruler.subLabels[j])
             }
     }
     else{
@@ -116,6 +115,15 @@ var constructRuler = function(){
     for (var exponentIndex = 0;  exponentIndex <= ruler.subUnitExponent ;  exponentIndex++) {
         //loop thru each desired level of ticks, inches, halves, quarters, etc....
         var tickQty = ruler.width * Math.pow(ruler.subUnitBase,exponentIndex)
+        if (ruler.subUnitBase === '10'){//Decimal!
+            if (exponentIndex === 0) {
+                tickQty = ruler.width
+            } else if (exponentIndex === 1) {
+                tickQty = 2.0 * ruler.width
+            } else  {
+                tickQty = 10.0 * ruler.width
+            }
+        }
         layerArray[exponentIndex]= new paper.Layer();
         layerArray[exponentIndex].name = ruler.subLabels[exponentIndex] + " Tick Group";
 
@@ -123,23 +131,26 @@ var constructRuler = function(){
 
         highestTickDenomonatorMultiplier = ruler.ticksPerUnit / Math.pow(ruler.subUnitBase,exponentIndex)
         //to prevent reduntant ticks, this multiplier is applied to crrent units to ensure consistent indexing of ticks.
-        for (var tickIndex = 0;  tickIndex <= tickQty ;  tickIndex++) {
-            ruler.masterTickIndex = highestTickDenomonatorMultiplier * tickIndex
-            // levelToLevelMultiplier =0.7
-            var tickHeight
-            tickHeight = ruler.heightPixels*Math.pow(ruler.levelToLevelMultiplier,exponentIndex)
-            console.info(tickHeight)
-            console.info(exponentIndex) 
-            console.info(ruler.levelToLevelMultiplier)
+        if ((ruler.subUnitBase === '10' && exponentIndex < 3) || ruler.subUnitBase === '2') {//Decimal!
+        
+            for (var tickIndex = 0;  tickIndex <= tickQty ;  tickIndex++) {
+                ruler.masterTickIndex = highestTickDenomonatorMultiplier * tickIndex
+                // levelToLevelMultiplier =0.7
+                var tickHeight
+                tickHeight = ruler.heightPixels*Math.pow(ruler.levelToLevelMultiplier,exponentIndex)
+                console.info(tickHeight)
+                console.info(exponentIndex) 
+                console.info(ruler.levelToLevelMultiplier)
 
-            var tickSpacing = ruler.pixelsPerUnit/(Math.pow(ruler.subUnitBase,exponentIndex))
-            //spacing between ticks, the fundemental datum on a ruler :-)
-            var finalTick = false
-            if(tickIndex === tickQty){finalTick = true}
+                var tickSpacing = ruler.pixelsPerUnit/(Math.pow(ruler.subUnitBase,exponentIndex))
+                //spacing between ticks, the fundemental datum on a ruler :-)
+                var finalTick = false
+                if(tickIndex === tickQty){finalTick = true}
 
-            var offsetTickIndex = parseInt(tickIndex) + parseInt(startNo)
-            tick(tickHeight,0, tickIndex, offsetTickIndex, exponentIndex, tickSpacing,finalTick);
-            //draws the ticks
+                var offsetTickIndex = parseInt(tickIndex) + parseInt(startNo)
+                tick(tickHeight,0, tickIndex, offsetTickIndex, exponentIndex, tickSpacing,finalTick);
+                //draws the ticks
+            }
         }
     }
 }
