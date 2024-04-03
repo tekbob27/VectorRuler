@@ -133,7 +133,7 @@ var constructRuler = function(){
         //to prevent reduntant ticks, this multiplier is applied to crrent units to ensure consistent indexing of ticks.
         //if ((ruler.subUnitBase === '10' && exponentIndex < 3) || ruler.subUnitBase === '2') {//Decimal!
         
-            for (var tickIndex = 0;  tickIndex <= tickQty ;  tickIndex++) {
+            for (var tickIndex = 0;  tickIndex <= tickQty + 1;  tickIndex++) {
                 ruler.masterTickIndex = highestTickDenomonatorMultiplier * tickIndex
                 // levelToLevelMultiplier =0.7
                 var tickHeight
