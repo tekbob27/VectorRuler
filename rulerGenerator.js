@@ -213,7 +213,7 @@ var tickLabel = function(x1,y2,finalTick,tickIndex,exponentIndex){
                 text.justification = 'left';
                 // if (finalTick) {text.justification = 'right';}//last label is right justified
                 text.fillColor = 'black';
-                text.content = ruler.width - (tickIndex + 1)
+                text.content = ruler.width - (tickIndex)
             }
             text.style = {
                 // fontFamily: 'Helvetica',
