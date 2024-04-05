@@ -185,7 +185,10 @@ var tick = function(tickHeight, horizPosition, tickIndex, offsetTickIndex, expon
 
 var tickLabel = function(x1,y2,finalTick,tickIndex,exponentIndex){
     //label the tick
-            if (tickIndex == 0) {
+            if (tickIndex == 0 && ruler.direction === "increasing") {
+                return
+            }
+            if (finalTick === true && ruler.direction === "decreasing") {
                 return
             }
             var labelTextSize
@@ -201,12 +204,17 @@ var tickLabel = function(x1,y2,finalTick,tickIndex,exponentIndex){
             text.justification = 'right';
             // if (finalTick) {text.justification = 'right';}//last label is right justified
             text.fillColor = 'black';
-            text.content = tickIndex;
+            if (ruler.direction === "increasing") {
+                text.content = tickIndex;
+            } else if (ruler.direction === "decreasing") {
+                text.content = ruler.width - tickIndex
+            }
             text.style = {
-            // fontFamily: 'Helvetica',
-            fontFamily: 'monospace',
-            fontWeight: 'bold',
-            fontSize: labelTextSize}
+                // fontFamily: 'Helvetica',
+                fontFamily: 'monospace',
+                fontWeight: 'bold',
+                fontSize: labelTextSize
+             }
             text.name = ruler.subLabels[exponentIndex] + " label no. " +tickIndex //label for SVG editor
 }
 
@@ -224,6 +232,7 @@ var updateVariables = function(){
     ruler.subUnitExponent = $('#subUnitExponent').val() ;
     ruler.levelToLevelMultiplier = $('#levelToLevelMultiplier').val();
     ruler.cmPerInch = 2.54
+    ruler.direction = $("input:radio[name=direction]:checked").val();
 }
 
 var build = function(){
