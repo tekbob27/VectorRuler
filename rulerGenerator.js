@@ -138,9 +138,6 @@ var constructRuler = function(){
                 // levelToLevelMultiplier =0.7
                 var tickHeight
                 tickHeight = ruler.heightPixels*Math.pow(ruler.levelToLevelMultiplier,exponentIndex)
-                console.info(tickHeight)
-                console.info(exponentIndex) 
-                console.info(ruler.levelToLevelMultiplier)
 
                 var tickSpacing = ruler.pixelsPerUnit/(Math.pow(ruler.subUnitBase,exponentIndex))
                 if (ruler.subUnitBase === '10'){//Decimal!
@@ -232,7 +229,7 @@ var updateVariables = function(){
     ruler.subUnitExponent = $('#subUnitExponent').val() ;
     ruler.levelToLevelMultiplier = $('#levelToLevelMultiplier').val();
     ruler.cmPerInch = 2.54
-    ruler.direction = $("input:radio[name=direction]:checked").val();
+    ruler.direction = $("input:radio[name=direction]:checked'").val();
 }
 
 var build = function(){
