@@ -147,6 +147,7 @@ var constructRuler = function(){
                         tickSpacing = ruler.pixelsPerUnit / 10.0
                     }
                 }
+                
                 //spacing between ticks, the fundemental datum on a ruler :-)
                 var finalTick = false
                 if(tickIndex === tickQty + 1){finalTick = true}
@@ -203,8 +204,16 @@ var tickLabel = function(x1,y2,finalTick,tickIndex,exponentIndex){
             text.fillColor = 'black';
             if (ruler.direction === "increasing") {
                 text.content = tickIndex;
+                var text = new paper.PointText(new paper.Point(x1 - xLabelOffset, y2 - yLabelOffset));
+                text.justification = 'right';
+                // if (finalTick) {text.justification = 'right';}//last label is right justified
+                text.fillColor = 'black';
             } else if (ruler.direction === "decreasing") {
-                text.content = ruler.width - tickIndex
+                var text = new paper.PointText(new paper.Point(x1 + xLabelOffset, y2 + yLabelOffset));
+                text.justification = 'left';
+                // if (finalTick) {text.justification = 'right';}//last label is right justified
+                text.fillColor = 'black';
+                text.content = ruler.width - (tickIndex + 1)
             }
             text.style = {
                 // fontFamily: 'Helvetica',
